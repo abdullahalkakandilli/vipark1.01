@@ -25,7 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="40dp"
-        android:onClick="sign_up_for_user"
+        android:onClick="ok_button"
         android:text="Oturum Açın"
         android:textColor="@color/orangev1"
         android:textStyle="bold"

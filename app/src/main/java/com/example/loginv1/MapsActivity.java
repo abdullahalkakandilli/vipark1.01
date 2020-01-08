@@ -10,11 +10,18 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,9 +50,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    private static final String TAG = "    ";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private GoogleMap mMap;
     ArrayList<Integer> ids;
@@ -60,25 +69,59 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Boolean mLocationPermissionGranted =false;
     private static  final int LOCATION_PERMISSION_REQUEST_CODE =1234;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-
+    private EditText mSearchText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        mSearchText=(EditText) findViewById(R.id.input_search);
+        mSearchText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         getLocationPermission();
         mStorageRef = FirebaseStorage.getInstance().getReference();
         info_window_park_markers = (ConstraintLayout) findViewById(R.id.info_window_park_markers);
         info_of_park_name = (TextView) findViewById(R.id.info_of_park_name);
         check_rezervation = (Button) findViewById(R.id.check_rezervation);
+        getDeviceLocation();
     }
+    private void init(){
+        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId== EditorInfo.IME_ACTION_SEARCH || actionId==EditorInfo.IME_ACTION_DONE || event.getAction()==KeyEvent.ACTION_DOWN || event.getAction()==KeyEvent.KEYCODE_ENTER){
+                    geoLocate();
+
+                }
+                return false;
+            }
+        });
+
+    }
+    private void geoLocate(){
+        String searchString = mSearchText.getText().toString();
+        Geocoder geocoder = new Geocoder(MapsActivity.this);
+        List<Address> list = new ArrayList<>();
+        try{
+            list =geocoder.getFromLocationName(searchString,1);
+        }catch (IOException e){
+            Log.e(TAG,"geolocate: "+e.getMessage());
+
+        }
+        if(list.size()>0){
+
+            Address address = list.get(0);
+            moveCamera(new LatLng(address.getLatitude(),address.getLongitude()),15f);
+
+        }
+    }
+    /*
     @Override
     protected void onResume() {
         if(mLocationPermissionGranted){
-            getDeviceLocation();
+            //getDeviceLocation();
         }
         super.onResume();
-    }
+    }*/
     private void initMap(){
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapsActivity.this);
@@ -196,6 +239,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 });
 
         mMap.setMyLocationEnabled(true);
+        init();
 
     }
 
@@ -258,6 +302,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
 
     public void check_rezervation(View view){
         Intent intent = new Intent(MapsActivity.this,rezervation_activity_with_wheel_time_picker.class);

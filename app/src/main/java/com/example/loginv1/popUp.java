@@ -106,7 +106,7 @@ public class popUp extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         tarih = dateFormat.format(today);
 
-        DateFormat dateFormat1 = new SimpleDateFormat("hh");
+        DateFormat dateFormat1 = new SimpleDateFormat("HH");
         hour = dateFormat1.format(today2);
 
         //DateFormat dateFormat2 = new SimpleDateFormat("mm");
@@ -143,9 +143,9 @@ public class popUp extends AppCompatActivity {
         wheelPicker.setData(wheel_dates);
         wheelPicker2.setData(wheel_hours);
 
+        wheelPicker.setSelectedItemPosition(1);
         wheelPicker2.setSelectedItemPosition(1);
         wheelPicker3.setSelectedItemPosition(1);
-        wheelPicker.setSelectedItemPosition(1);
         wheelPicker4.setSelectedItemPosition(1);
 
         wheelPicker4.setOnItemSelectedListener(new WheelPicker.OnItemSelectedListener() {
@@ -205,6 +205,11 @@ public class popUp extends AppCompatActivity {
 
         Intent intent = new Intent(popUp.this,PayActivity.class);
         intent.putExtra("park_name2", parkName);
+        intent.putExtra("what_is_minute", minute_of_selected_day);//seçtiği saat
+        intent.putExtra("what_is_hour", hour_of_selected_day);//saat
+        intent.putExtra("what_is_date", date);//tarih
+        intent.putExtra("how_many_hour", total_saat);//kaç saat olacağının bilgisi
+
         startActivity(intent);
 
     }

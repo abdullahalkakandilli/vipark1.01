@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Verify_Phone_Reg extends AppCompatActivity {
     EditText verfiy_code;
+    TextView phoneNumVer;
 
     FirebaseAuth mAuth;
     String phoneNumber;
@@ -41,6 +43,7 @@ public class Verify_Phone_Reg extends AppCompatActivity {
         verfiy_code = (EditText) findViewById(R.id.verification_code);
         mAuth = FirebaseAuth.getInstance();
         phoneAuthProvider = PhoneAuthProvider.getInstance();
+        phoneNumVer = (TextView) findViewById(R.id.phoneNumVer);
         verfiy_code.requestFocus();
 
         phoneNumber = getIntent().getStringExtra("phonenumber");
@@ -61,6 +64,12 @@ public class Verify_Phone_Reg extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        phoneNumVer.setText(phoneNumber);
     }
 
     private void verifyCode(String code){

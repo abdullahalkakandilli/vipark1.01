@@ -23,7 +23,8 @@
 
 
         android:layout_marginTop="20dp"
-        android:background="@drawable/pop_bg"
+        android:background="@drawable/pop_bg_middle_wheel"
+        aigestudio:layout_constraintEnd_toStartOf="@+id/wheel_picker4"
         aigestudio:layout_constraintStart_toEndOf="@+id/wheel_picker3"
         aigestudio:layout_constraintTop_toTopOf="parent"
         aigestudio:wheel_atmospheric="true"
@@ -31,9 +32,9 @@
         aigestudio:wheel_indicator="true"
         aigestudio:wheel_indicator_color="#D2D2D2"
         aigestudio:wheel_indicator_size="1dp"
-        aigestudio:wheel_item_text_color="#A7A7A7"
+        aigestudio:wheel_item_text_color="#FFFFFF"
         aigestudio:wheel_item_text_size="20sp"
-        aigestudio:wheel_selected_item_text_color="#333333" />
+        aigestudio:wheel_selected_item_text_color="#FFFFFF" />
 
     <com.aigestudio.wheelpicker.WheelPicker
 
@@ -46,6 +47,7 @@
         android:layout_gravity="center"
 
         android:background="@drawable/pop_bg_middle_wheel"
+        aigestudio:layout_constraintEnd_toStartOf="@+id/wheel_picker3"
         aigestudio:layout_constraintStart_toStartOf="parent"
         aigestudio:layout_constraintTop_toTopOf="@+id/wheel_picker"
         aigestudio:wheel_atmospheric="true"
@@ -53,9 +55,9 @@
         aigestudio:wheel_indicator="true"
         aigestudio:wheel_indicator_color="#D2D2D2"
         aigestudio:wheel_indicator_size="1dp"
-        aigestudio:wheel_item_text_color="#A7A7A7"
+        aigestudio:wheel_item_text_color="#FFFFFF"
         aigestudio:wheel_item_text_size="20sp"
-        aigestudio:wheel_selected_item_text_color="#333333" />
+        aigestudio:wheel_selected_item_text_color="#FFFFFF" />
 
     <com.aigestudio.wheelpicker.WheelPicker
 
@@ -68,24 +70,28 @@
         android:layout_gravity="center"
 
         android:background="@drawable/pop_bg_middle_wheel"
+        aigestudio:layout_constraintCircleRadius="0dp"
+        aigestudio:layout_constraintEnd_toStartOf="@+id/wheel_picker"
         aigestudio:layout_constraintStart_toEndOf="@+id/wheel_picker2"
         aigestudio:layout_constraintTop_toTopOf="@+id/wheel_picker"
         aigestudio:wheel_atmospheric="true"
         aigestudio:wheel_curved="true"
+
         aigestudio:wheel_indicator="true"
         aigestudio:wheel_indicator_color="#D2D2D2"
         aigestudio:wheel_indicator_size="1dp"
-        aigestudio:wheel_item_text_color="#A7A7A7"
+        aigestudio:wheel_item_text_color="#FFFFFF"
         aigestudio:wheel_item_text_size="20sp"
-        aigestudio:wheel_selected_item_text_color="#333333" />
+        aigestudio:wheel_selected_item_text_color="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="Giriş Saati"
+        android:textColor="@color/white"
         android:textSize="16sp"
         aigestudio:layout_constraintStart_toStartOf="parent"
         aigestudio:layout_constraintTop_toTopOf="parent" />
@@ -94,9 +100,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
-        android:layout_marginLeft="85dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
         android:text="Giriş Tarihi"
+        android:textColor="@color/white"
         android:textSize="16sp"
         aigestudio:layout_constraintStart_toEndOf="@+id/textView"
         aigestudio:layout_constraintTop_toTopOf="parent" />
@@ -108,6 +115,7 @@
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:text="Park Süresi"
+        android:textColor="@color/white"
         android:textSize="16sp"
         aigestudio:layout_constraintEnd_toEndOf="parent"
         aigestudio:layout_constraintTop_toTopOf="parent" />
@@ -123,25 +131,27 @@
         android:layout_gravity="center"
 
 
-        android:background="@drawable/pop_bg"
+        android:background="@drawable/pop_bg_middle_wheel"
         aigestudio:layout_constraintBottom_toBottomOf="@+id/wheel_picker"
+        aigestudio:layout_constraintCircleRadius="1dp"
         aigestudio:layout_constraintEnd_toEndOf="parent"
+        aigestudio:layout_constraintStart_toEndOf="@+id/wheel_picker"
         aigestudio:wheel_atmospheric="true"
         aigestudio:wheel_curved="true"
         aigestudio:wheel_indicator="true"
         aigestudio:wheel_indicator_color="#D2D2D2"
         aigestudio:wheel_indicator_size="1dp"
-        aigestudio:wheel_item_text_color="#A7A7A7"
+        aigestudio:wheel_item_text_color="#FFFFFF"
         aigestudio:wheel_item_text_size="20sp"
-        aigestudio:wheel_selected_item_text_color="#333333" />
+        aigestudio:wheel_selected_item_text_color="#FFFFFF" />
 
     <Button
         android:id="@+id/check_rezervation"
         android:layout_width="100dp"
         android:layout_height="33dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="@drawable/effect_button"
+        android:background="@drawable/sharp_button2"
         android:onClick="check_rezervation"
         android:text="@android:string/ok"
         android:textColor="@color/white"
@@ -150,14 +160,14 @@
         aigestudio:layout_constraintHorizontal_bias="0.807"
         aigestudio:layout_constraintStart_toStartOf="parent"
         aigestudio:layout_constraintTop_toBottomOf="@+id/wheel_picker"
-        aigestudio:layout_constraintVertical_bias="0.65" />
+        aigestudio:layout_constraintVertical_bias="0.511" />
 
     <TextView
         android:id="@+id/park_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textColor="@color/orange"
+        android:textColor="@color/white"
         android:textSize="16sp"
         aigestudio:layout_constraintBottom_toBottomOf="@+id/check_rezervation"
         aigestudio:layout_constraintEnd_toStartOf="@+id/check_rezervation"
