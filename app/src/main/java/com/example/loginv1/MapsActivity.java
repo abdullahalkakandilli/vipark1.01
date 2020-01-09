@@ -22,6 +22,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +66,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ConstraintLayout info_window_park_markers;
     TextView info_of_park_name;
     Button check_rezervation;
+    ImageView rez_info;
+    ImageView terms_con;
+    ImageView ic_magnify;
+    ImageButton imageButton;
+
     private static final String FINE_LOCATION= Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION=Manifest.permission.ACCESS_COARSE_LOCATION;
     private Boolean mLocationPermissionGranted =false;
@@ -82,6 +89,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         info_window_park_markers = (ConstraintLayout) findViewById(R.id.info_window_park_markers);
         info_of_park_name = (TextView) findViewById(R.id.info_of_park_name);
         check_rezervation = (Button) findViewById(R.id.check_rezervation);
+
+
         getDeviceLocation();
     }
     private void init(){
@@ -138,6 +147,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        googleMap.setPadding(0,0,0,80);
         mMap = googleMap;
         info_window_park_markers.setVisibility(View.INVISIBLE);
 
@@ -215,11 +225,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                     public boolean onMarkerClick(Marker marker) {
                                         if(marker.getSnippet().equals("1")||marker.getSnippet().equals("Rezervasyon yapılabilir")){
                                             marker.setSnippet("Rezervasyon yapılabilir");
-                                            Toast.makeText(MapsActivity.this,"button enable",Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(MapsActivity.this,"button enable",Toast.LENGTH_SHORT).show();
 
                                         }else if(marker.getSnippet().equals("0")||marker.getSnippet().equals("Rezervasyon yapılamaz")){
                                             marker.setSnippet("Rezervasyon yapılamaz");
-                                            Toast.makeText(MapsActivity.this,"sadasdsads",Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(MapsActivity.this,"sadasdsads",Toast.LENGTH_SHORT).show();
 
                                         }
                                         Intent intent = new Intent(MapsActivity.this,popUp.class);
@@ -306,6 +316,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void check_rezervation(View view){
         Intent intent = new Intent(MapsActivity.this,rezervation_activity_with_wheel_time_picker.class);
+        startActivity(intent);
+    }
+    public void rez_infos(View view){
+        Intent intent = new Intent(MapsActivity.this,user_rezervations.class);
+        startActivity(intent);
+    }
+    public  void terms_con(View view){
+        Intent intent = new Intent(MapsActivity.this,terms_and_conditions.class);
         startActivity(intent);
     }
 

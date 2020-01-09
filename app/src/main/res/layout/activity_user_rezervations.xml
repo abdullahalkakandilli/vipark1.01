@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".user_rezervations">
+
+    <ImageView
+        android:id="@+id/exit_rez_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginRight="231dp"
+        android:clickable="true"
+        android:onClick="refresh_rez"
+        app:layout_constraintEnd_toStartOf="@+id/vipark_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginBottom="650dp"
+        android:text="REZERVASYONLARIM"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/park_name"
+        app:layout_constraintTop_toBottomOf="@+id/vipark_logo" />
+
+    <ImageView
+        android:id="@+id/vipark_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/exit_rez_info"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/splash_act_opening" />
+
+    <TextView
+        android:id="@+id/park_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="26dp"
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/how_many"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/random_code"
+        app:layout_constraintTop_toBottomOf="@+id/random_code" />
+
+    <TextView
+        android:id="@+id/random_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/rez_price"
+        app:layout_constraintTop_toBottomOf="@+id/rez_price" />
+
+    <TextView
+        android:id="@+id/rez_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/rez_hour_and_min"
+        app:layout_constraintTop_toBottomOf="@+id/rez_hour_and_min" />
+
+    <TextView
+        android:id="@+id/rez_hour_and_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/rez_date"
+        app:layout_constraintTop_toBottomOf="@+id/rez_date" />
+
+    <TextView
+        android:id="@+id/rez_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/park_name"
+        app:layout_constraintTop_toBottomOf="@+id/park_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

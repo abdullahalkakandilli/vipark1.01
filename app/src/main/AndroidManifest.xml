@@ -16,18 +16,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".Verify_Phone_Reg"
-            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
-        <activity android:name=".phoneSignInActivity"
-            android:windowSoftInputMode="stateVisible|adjustPan">
-
-        </activity>
-
+        <activity android:name=".profile_page"></activity>
+        <activity android:name=".terms_and_conditions" />
+        <activity android:name=".user_rezervations" />
+        <activity
+            android:name=".Verify_Phone_Reg"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity
+            android:name=".phoneSignInActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
         <activity
             android:name=".popUp"
             android:theme="@style/AppTheme.Popme" />
         <activity android:name=".rezervation_activity_with_wheel_time_picker" />
-        <activity android:name=".PayActivity" />
+        <activity
+            android:name=".PayActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
         <activity android:name=".ReservationActivity" />
         <activity
             android:name=".SplashActivity"
@@ -35,6 +39,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
